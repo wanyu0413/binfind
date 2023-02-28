@@ -2,6 +2,12 @@ class BinsController < ApplicationController
 
   def index
     @bins = policy_scope(Bin)
+    @markers = @bins.geocoded.map do |bin|
+      {
+        lat: bin.latitude,
+        lng: bin.longitude
+      }
+    end
   end
 
   def show
