@@ -1,0 +1,5 @@
+<% if policy(@bin).edit? %>
+  <%= link_to "Edit this bin", edit_bin_path(@bin) %> |
+<% end %>
+<!-- [...] -->
+<%= button_to "Destroy this bin", @bin, method: :delete if policy(@bin).destroy? %>
