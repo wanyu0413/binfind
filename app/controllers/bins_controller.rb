@@ -5,7 +5,8 @@ class BinsController < ApplicationController
     @markers = @bins.geocoded.map do |bin|
       {
         lat: bin.latitude,
-        lng: bin.longitude
+        lng: bin.longitude,
+        popup_window_html: render_to_string(partial: "popup_window", locals: {bin: bin})
       }
     end
   end
