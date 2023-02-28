@@ -1,0 +1,2 @@
+class BinsController < ApplicationController
+end
