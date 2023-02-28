@@ -21,8 +21,8 @@ class BinsController < ApplicationController
 
   def create
     @bin = Bin.new(bin_params)
-      @bin.user = current_user
-      authorize @bin
+    @bin.user = current_user
+    authorize @bin
   end
 
   def edit
