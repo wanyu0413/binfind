@@ -5,5 +5,5 @@ class Bin < ApplicationRecord
   has_many :bin_categories
   has_many :categories, through: :bin_categories
   has_many_attached :photos
-  validates :name, :open_time, :end_time, presence: true
+  validates :name, presence: true
 end
