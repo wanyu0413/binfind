@@ -12,25 +12,100 @@ require 'tod'
 User.destroy_all
 Bin.destroy_all
 
-addresses_url = 'https://gist.githubusercontent.com/trouni/599e03440e2552e803c54c62916f874c/raw/cc7aff8deeb27c3f22ee501b6723766a8cb68f2b/addresses.yml'
-serialized_addresses = URI.open(addresses_url).read
-addresses = YAML.load(serialized_addresses)
+# addresses_url = 'https://gist.githubusercontent.com/trouni/599e03440e2552e803c54c62916f874c/raw/cc7aff8deeb27c3f22ee501b6723766a8cb68f2b/addresses.yml'
+# serialized_addresses = URI.open(addresses_url).read
+# addresses = YAML.load(serialized_addresses)
 
-names = ["Family Mart","Seven-Eleven", "Lawson", "Maruetsu", "Tokyu", "Garden", "Precce", "Seijo", "Basket", "Park", "Station", "Impact Hub Parking Lot vending machine", "Building next to Impact Hub vending machine", "Bagel Standard vending machine", "Menchobu Restaurant vending machine", "Apartment vending machine", "Karf vending machine", "Photoshop vending machine", "Meguro Tokyu Store vending machine", "Meguro Station Bus Stop vending machine", "Meguro Station vending machine", "Meguro Gakuen Culture School vending machine", "Across from Meguro Gakuen vending machine", "Across From Family Mart vending machine","Toks vending machine", "Tangle vending machine", "Yamate Buld vending machine", "Sarroq Palace vending machine", "K2 Sagawa vending machine", "Soleil Gotanda vending machine", "Gotanda Station vending machine"]
+names = ["Family Mart","Seven-Eleven", "Lawson", "Maruetsu Supermarket", "Tokyu Supermarket", "Garden Supermarket", "PrecceSupermarket", "Seijo Supermarket", "Basket Supermarket", "Park", "Station", "Impact Hub Parking Lot vending machine", "Building next to Impact Hub vending machine", "Bagel Standard vending machine", "Menchobu Restaurant vending machine", "Apartment vending machine", "Karf vending machine", "Photoshop vending machine", "Meguro Tokyu Store vending machine", "Meguro Station Bus Stop vending machine", "Meguro Station vending machine", "Meguro Gakuen Culture School vending machine", "Across from Meguro Gakuen vending machine", "Across From Family Mart vending machine","Toks vending machine", "Tangle vending machine", "Yamate Buld vending machine", "Sarroq Palace vending machine", "K2 Sagawa vending machine", "Soleil Gotanda vending machine", "Gotanda Station vending machine"]
 
+User.create(email: "kevin@binfind.com", password: "123123")
+User.create(email: "wanyu@binfind.com", password: "123123")
+User.create(email: "ruka@binfind.com", password: "123123")
+User.create(email: "julien@binfind.com", password: "123123")
 categories = ["burnable", "can", "pet bottle", "unburnable"]
 
-
-user = User.create!(email: 'binfind@email.com', password: '123123')
+addresses = YAML.load_file("db/data/seven_eleven.yml")
 addresses.each do |address|
-  capacity = [true, false].sample
   Bin.create!(
-    address:address,
-    name:names.sample,
-    open_time: Tod::TimeOfDay.parse("8am"),
-    end_time:Tod::TimeOfDay.parse("11pm"),
-    category:categories.sample,
-    capacity: capacity,
-    user: user
+    address: address,
+    name: "Seven-Eleven",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
   )
 end
+
+addresses = YAML.load_file("db/data/family_mart.yml")
+addresses.each do |address|
+  Bin.create!(
+    address: address,
+    name: "Family-Mart",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
+  )
+end
+
+addresses = YAML.load_file("db/data/lawson.yml")
+addresses.each do |address|
+  Bin.create!(
+    address: address,
+    name: "Lawson",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
+  )
+end
+
+addresses = YAML.load_file("db/data/parks.yml")
+addresses.each do |address|
+  Bin.create!(
+    address: address,
+    name: "Park",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
+  )
+end
+
+addresses = YAML.load_file("db/data/supermarkets.yml")
+addresses.each do |address|
+  Bin.create!(
+    address: address,
+    name: "Supermarket",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
+  )
+end
+
+addresses = YAML.load_file("db/data/train_station.yml")
+addresses.each do |address|
+  Bin.create!(
+    address: address,
+    name: "Train-station",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
+  )
+end
+
+addresses = YAML.load_file("db/data/vending_machine.yml")
+addresses.each do |address|
+  Bin.create!(
+    address: address,
+    name: "Vending-machine",
+    # open_time: Tod::TimeOfDay.parse("8am"),
+    # end_time: Tod::TimeOfDay.parse("11pm"),
+    # category: categories.sample,
+    user: User.all.sample
+  )
+end
+
+Bin.all.each {|bin|bin.destroy if bin.latitude.nil?}
