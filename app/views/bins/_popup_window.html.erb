@@ -6,5 +6,5 @@
       <p><%= bin.address %></p>
     </div>
   </div>
-  <button type="button" class="btn btn-success btn-sm">Get Directions</button>
+  <%= link_to "Get Directions", "https://www.google.com/maps?saddr=My+Location&daddr=#{bin.address}", class: "btn btn-success btn-sm", target: :blank %>
 </div>
