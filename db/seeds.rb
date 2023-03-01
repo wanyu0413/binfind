@@ -84,11 +84,11 @@ addresses.each do |address|
   )
 end
 
-addresses = YAML.load_file("db/data/train_station.yml")
+addresses = YAML.load_file("db/data/train_stations.yml")
 addresses.each do |address|
   Bin.create!(
     address: address,
-    name: "Train-station",
+    name: "Train-stations",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     # category: categories.sample,
@@ -96,11 +96,11 @@ addresses.each do |address|
   )
 end
 
-addresses = YAML.load_file("db/data/vending_machine.yml")
+addresses = YAML.load_file("db/data/vending_machines.yml")
 addresses.each do |address|
   Bin.create!(
     address: address,
-    name: "Vending-machine",
+    name: "Vending-machines",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     # category: categories.sample,
