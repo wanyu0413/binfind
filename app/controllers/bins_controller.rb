@@ -6,7 +6,7 @@ class BinsController < ApplicationController
       {
         lat: bin.latitude,
         lng: bin.longitude,
-        popup_window_html: render_to_string(partial: "popup_window", locals: {bin: bin})
+        popup_window_html: render_to_string(partial: "popup_window", locals: { bin: bin })
       }
     end
   end
