@@ -1,5 +1,18 @@
-<%= link_to "New bin", new_bin_path if policy(Bin).new? %>
-<div style="width: 100%; height: 600px;"
+<%# <%= link_to "New bin", new_bin_path if policy(Bin).new? %>
+<div class="mapbox mb-3" style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://www.instagram.com/supkev/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/kevin.s.tsai" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://twitter.com/supkev" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
+  <ul>
+    <li><a href="Terms">Terms</a></li>
+    <li><a href="Sitemap">Sitemap</a></li>
+    <li><a href="Privacy">Privacy</a></li>
+  </ul>
+</div>
