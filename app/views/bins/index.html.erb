@@ -1,28 +1,14 @@
 <%# <%= link_to "New bin", new_bin_path if policy(Bin).new? %>
-<div class="map-container">
-  <%= form_with url: bins_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a bin category"
-  %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-  <div class="mapbox" style="width: 100%;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-map-markers-value="<%= @markers.to_json %>">
+  <div class="mapbox" style="width: 100%;" data-map-target="canvas">
   </div>
   <div class="footer">
     <div class="footer-links">
+      <button class="btn-toggle" data-action="click->map#toggle">Toggle Dark-Mode</button>
       <a href="https://www.instagram.com/supkev/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/kevin.s.tsai" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="https://twitter.com/supkev" target="_blank"><i class="fab fa-twitter"></i></a>
     </div>
-    <ul>
-      <li><a href="Terms">Terms</a></li>
-      <li><a href="Sitemap">Sitemap</a></li>
-      <li><a href="Privacy">Privacy</a></li>
-    </ul>
   </div>
 </div>
