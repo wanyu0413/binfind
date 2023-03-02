@@ -4,26 +4,37 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 // Connects to data-controller="map"
 export default class extends Controller {
+
   static values = {
     apiKey: String,
     markers: Array
   }
 
-  connect() {
-    console.log("connected")
-    mapboxgl.accessToken = this.apiKeyValue
+  static targets = ["canvas"]
 
+  connect() {
+    mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.canvasTarget,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+    // map = this.#drawMap();
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
-
   }
 
+  toggle(event) {
+    const style = this.map.style.stylesheet.id;
+    console.log(style);
+    if (style === "dark-v10") {
+      this.map.setStyle("mapbox://styles/mapbox/streets-v10")
+    } else {
+      this.map.setStyle("mapbox://styles/mapbox/dark-v10")
+    }
+  }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {

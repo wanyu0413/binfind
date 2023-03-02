@@ -13,3 +13,22 @@ body {
 .mapbox {
   flex-grow: 1;
 }
+
+//darkmode//
+
+.darkmode {
+  color: #eee;
+  background: #121212;
+}
+
+.darkmode a {
+  color: #809fff;
+}
+
+.darkmode .logo{
+  filter: invert(1);
+}
+
+.darkmode-map {
+  filter: invert(1);
+}

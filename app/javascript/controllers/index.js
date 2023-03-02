@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import DarkmodeController from "./darkmode_controller"
+application.register("darkmode", DarkmodeController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
