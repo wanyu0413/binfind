@@ -45,68 +45,86 @@ end
 
 addresses = YAML.load_file("db/data/family_mart.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Family-Mart",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/lawson.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Lawson",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/parks.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Park",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.where(name: ['burnable']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/supermarkets.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Supermarket",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/train_stations.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Train-stations",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/vending_machines.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Vending-machines",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.where(name: ['can', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 # Bin.all.each do |bin|

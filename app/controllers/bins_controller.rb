@@ -2,17 +2,16 @@ class BinsController < ApplicationController
 
   def index
     @bins = policy_scope(Bin)
+    if params[:query].present?
+      # @bins = Bin.where(category: params[:query])
+      @bins = Bin.joins(bin_categories: :category).where(categories: {name: params[:query]})
+    end
     @markers = @bins.geocoded.map do |bin|
       {
         lat: bin.latitude,
         lng: bin.longitude,
         popup_window_html: render_to_string(partial: "popup_window", locals: { bin: bin })
       }
-    end
-    if params[:category].present?
-      @bins = Bin.where(category: params[:category])
-    else
-      @bins = Bin.all
     end
   end
 
