@@ -52,7 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_034211) do
   end
 
   create_table "bins", force: :cascade do |t|
-    t.string "category"
     t.string "name"
     t.boolean "capacity"
     t.string "open_time"
