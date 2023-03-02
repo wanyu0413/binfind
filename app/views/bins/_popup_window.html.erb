@@ -8,6 +8,9 @@
     <div>
       <h4><%= bin.name %></h4>
       <p><%= bin.address %></p>
+      <% bin.categories.each do |category| %>
+        <p><%= category.name.capitalize %></p>
+      <% end %>
     </div>
   </div>
   <%= link_to "Get Directions", "https://www.google.com/maps?saddr=My+Location&daddr=#{bin.address}", class: "btn btn-success btn-sm", target: :blank %>
