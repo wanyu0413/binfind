@@ -1,5 +1,9 @@
 <div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <% if bin.photos.attached? %>
+  <%= cl_image_tag(bin.photos.first.key) %>
+  <% else %>
+  <img src="https://www.dulton.jp/img/goods/8/PT_img.jpg" />
+  <% end %>
   <div class="card-trip-infos">
     <div>
       <h4><%= bin.name %></h4>
