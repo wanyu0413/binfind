@@ -26,19 +26,21 @@ User.create(email: "ruka@binfind.com", password: "123123")
 User.create(email: "julien@binfind.com", password: "123123")
 categories = ["burnable", "can", "pet bottle", "unburnable"]
 
-
 categories.each do |category|
   Category.create!(name: category)
 end
 addresses = YAML.load_file("db/data/seven_eleven.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Seven-Eleven",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/family_mart.yml")
@@ -107,7 +109,7 @@ addresses.each do |address|
   )
 end
 
-Bin.all.each do |bin|
-  BinCategory.create!(bin: bin, category: Category.all.sample)
-  bin.destroy if bin.latitude.nil?
-end
+# Bin.all.each do |bin|
+#   BinCategory.create!(bin: bin, category: Category.all.sample)
+#   bin.destroy if bin.latitude.nil?
+# end
