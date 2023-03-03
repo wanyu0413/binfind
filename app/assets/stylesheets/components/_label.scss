@@ -11,13 +11,16 @@
   background-color: white;
   color: rgb(82, 82, 82) !important;
   font-weight: lighter;
+  background-color: rgb(255, 255, 255);
 }
 
 .category-selector:checked + label {
   color: black !important;
   font-weight: bold;
-  border-color: black;
+  border-color: rgb(255, 255, 255);
+  background-color: rgb(167, 166, 164);
 }
+
 
 // .category-wrapper {
 //   display: flex;
@@ -29,10 +32,11 @@
 //   flex: 0 0 30%;
 // }
 
-// .category-selector {
-//   position: absolute;
-//   transform: scale(0);
-// }
+.category-selector {
+  // position: absolute;
+  // transform: scale(0);
+  background-color: purple;
+}
 
 // .category-selector + label {
 //   display: block;
