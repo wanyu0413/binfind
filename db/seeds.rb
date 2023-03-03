@@ -54,6 +54,7 @@ addresses.each do |address|
 
   Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
     BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
@@ -76,7 +77,7 @@ addresses.each do |address|
 
   Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
     BinCategory.create!(bin: bin, category: category)
-
+    end
   end
 end
 
@@ -117,9 +118,9 @@ addresses.each do |address|
     )
   Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
     BinCategory.create!(bin: bin, category: category)
+   end
   end
 end
-
 puts "Create park bins..."
 addresses = YAML.load_file("db/data/parks.yml")
 addresses.each do |address|
