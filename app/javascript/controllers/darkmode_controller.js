@@ -6,8 +6,8 @@ export default class extends Controller {
 
   connect() { console.log("connected")
   }
-  // toggle() {
-  //   this.footerTarget.classList.toggle("darkmode");
-  //   this.navbarTarget.classList.toggle("darkmode");
-  // }
+  toggle() {
+    this.footerTarget.classList.toggle("darkmode");
+    this.navbarTarget.classList.toggle("darkmode");
+  }
 }
