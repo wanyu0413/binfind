@@ -23,7 +23,7 @@ body {
 }
 
 .darkmode a {
-  color: #809fff;
+  color: #eee;
 }
 
 .darkmode .logo{
@@ -31,5 +31,9 @@ body {
 }
 
 .darkmode-map {
+  filter: invert(1);
+}
+
+.darkmode .fa-eye {
   filter: invert(1);
 }

@@ -11,14 +11,14 @@
   <% end %>
   <div class="mapbox" style="width: 100%;" data-map-target="canvas">
   </div>
-  <div class="footer d-flex justify-content-between">
+  <div class="footer d-flex justify-content-between" data-darkmode-target="footer">
     <div class="footer-links">
       <a href="https://www.instagram.com/supkev/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/kevin.s.tsai" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="https://twitter.com/supkev" target="_blank"><i class="fab fa-twitter"></i></a>
     </div>
     <div>
-      <i class="fa-solid fa-eye btn-toggle" data-action="click->map#toggle"></i>
+      <i class="fa-solid fa-eye btn-toggle" data-action="click->map#toggle click->darkmode#toggle"></i>
     </div>
   </div>
 </div>

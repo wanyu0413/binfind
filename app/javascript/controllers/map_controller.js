@@ -13,6 +13,7 @@ export default class extends Controller {
   static targets = ["canvas"]
 
   connect() {
+    console.log("mapcontroller")
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.canvasTarget,
