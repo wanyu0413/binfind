@@ -4,6 +4,7 @@
 
 import { application } from "./application"
 
+
 import DarkmodeController from "./darkmode_controller"
 application.register("darkmode", DarkmodeController)
 
@@ -12,3 +13,7 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import Autosave from 'stimulus-rails-autosave'
+
+application.register('autosave', Autosave)

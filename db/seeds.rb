@@ -52,15 +52,15 @@ addresses.each do |address|
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
-    Category.all.each do |category|
-      BinCategory.create!(bin: bin, category: category)
-    end
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
   end
 end
 
 puts "Create famima bins..."
 addresses = YAML.load_file("db/data/family_mart.yml")
 addresses.each do |address|
+
   bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
@@ -74,9 +74,9 @@ addresses.each do |address|
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
-    Category.all.each do |category|
-      BinCategory.create!(bin: bin, category: category)
-    end
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+
   end
 end
 
@@ -101,6 +101,7 @@ document.search('Placemark').each_with_index do |coordinates, index|
     user: users.sample
   )
 
+
   puts "Created #{Bin.count} bins!"
 end
 puts "Create lawson bins..."
@@ -114,14 +115,8 @@ addresses.each do |address|
       # end_time: Tod::TimeOfDay.parse("11pm"),
       user: User.all.sample
     )
-
-    # file = File.open("app/assets/images/card_photo/lawson.png")
-    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-    # bin.save
-
-    Category.all.each do |category|
-      BinCategory.create!(bin: bin, category: category)
-    end
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
   end
 end
 

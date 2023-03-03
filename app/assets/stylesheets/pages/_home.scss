@@ -2,6 +2,7 @@
 body {
   height: 100vh;
   overflow: hidden;
+  min-width: 300px;
 }
 
 .map-container {
@@ -22,7 +23,7 @@ body {
 }
 
 .darkmode a {
-  color: #809fff;
+  color: #eee;
 }
 
 .darkmode .logo{
@@ -30,5 +31,9 @@ body {
 }
 
 .darkmode-map {
+  filter: invert(1);
+}
+
+.darkmode .fa-eye {
   filter: invert(1);
 }

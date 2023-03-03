@@ -3,5 +3,5 @@ document.querySelector(".btn-toggle");
 
 btn.addEventListener("click", function () {
 
-document.body.classList.toggle("dark-theme");
+document.body.classList.toggle("darkmode");
 });

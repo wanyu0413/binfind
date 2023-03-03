@@ -2,12 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="darkmode"
 export default class extends Controller {
-  static targets = ["footer", "navbar", "map"]
+  static targets = ["footer", "navbar"]
 
-  connect() { console.log("connected")
+  connect() {
+    console.log("darkmode_controller")
+    console.log(this.footerTarget.classList)
+    console.log(this.navbarTarget.classList)
   }
-  // toggle(e) {
-  //   this.footerTarget.classList.toggle("darkmode");
-  //   this.navbarTarget.classList.toggle("darkmode");
-  // }
+  toggle() {
+    this.footerTarget.classList.toggle("darkmode");
+    this.navbarTarget.classList.toggle("darkmode");
+  }
 }
