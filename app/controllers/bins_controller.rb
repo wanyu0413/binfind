@@ -13,6 +13,7 @@ class BinsController < ApplicationController
         popup_window_html: render_to_string(partial: "popup_window", locals: { bin: bin })
       }
     end
+    @categories = Category.all
   end
 
   def show
