@@ -9,10 +9,12 @@ require 'yaml'
 require 'open-uri'
 require 'tod'
 
+puts "Destroy everything..."
 User.destroy_all
 Bin.destroy_all
 BinCategory.destroy_all
 Category.destroy_all
+puts "done"
 
 # addresses_url = 'https://gist.githubusercontent.com/trouni/599e03440e2552e803c54c62916f874c/raw/cc7aff8deeb27c3f22ee501b6723766a8cb68f2b/addresses.yml'
 # serialized_addresses = URI.open(addresses_url).read
@@ -20,18 +22,24 @@ Category.destroy_all
 
 names = ["Family Mart", "Seven-Eleven", "Lawson", "Maruetsu Supermarket", "Tokyu Supermarket", "Garden Supermarket", "PrecceSupermarket", "Seijo Supermarket", "Basket Supermarket", "Park", "Station", "Impact Hub Parking Lot vending machine", "Building next to Impact Hub vending machine", "Bagel Standard vending machine", "Menchobu Restaurant vending machine", "Apartment vending machine", "Karf vending machine", "Photoshop vending machine", "Meguro Tokyu Store vending machine", "Meguro Station Bus Stop vending machine", "Meguro Station vending machine", "Meguro Gakuen Culture School vending machine", "Across from Meguro Gakuen vending machine", "Across From Family Mart vending machine","Toks vending machine", "Tangle vending machine", "Yamate Buld vending machine", "Sarroq Palace vending machine", "K2 Sagawa vending machine", "Soleil Gotanda vending machine", "Gotanda Station vending machine"]
 
+bin_num = (1..7).to_a
+
+puts "Create users..."
 User.create(email: "kevin@binfind.com", password: "123123")
 User.create(email: "wanyu@binfind.com", password: "123123")
 User.create(email: "ruka@binfind.com", password: "123123")
 User.create(email: "julien@binfind.com", password: "123123")
 categories = ["burnable", "can", "pet bottle", "unburnable"]
+puts "done"
 
 categories.each do |category|
   Category.create!(name: category)
 end
+
+puts "Create 7eleven bins..."
 addresses = YAML.load_file("db/data/seven_eleven.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
     name: "Seven-Eleven",
@@ -50,9 +58,10 @@ addresses.each do |address|
   end
 end
 
+puts "Create famima bins..."
 addresses = YAML.load_file("db/data/family_mart.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
       name: "Family-Mart",
@@ -94,10 +103,10 @@ document.search('Placemark').each_with_index do |coordinates, index|
 
   puts "Created #{Bin.count} bins!"
 end
-
+puts "Create lawson bins..."
 addresses = YAML.load_file("db/data/lawson.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
       name: "Lawson",
@@ -106,7 +115,7 @@ addresses.each do |address|
       user: User.all.sample
     )
 
-    file = File.open("app/assets/images/card_photo/lawson.png")
+    # file = File.open("app/assets/images/card_photo/lawson.png")
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
@@ -116,9 +125,10 @@ addresses.each do |address|
   end
 end
 
+puts "Create park bins..."
 addresses = YAML.load_file("db/data/parks.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
       name: "Park",
@@ -127,7 +137,7 @@ addresses.each do |address|
       user: User.all.sample
     )
 
-    file = File.open("app/assets/images/card_photo/Park.jpeg")
+    # file = File.open("app/assets/images/card_photo/Park.jpeg")
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
@@ -137,9 +147,10 @@ addresses.each do |address|
   end
 end
 
+puts "Create supa bins..."
 addresses = YAML.load_file("db/data/supermarkets.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
       name: "Supermarket",
@@ -148,7 +159,7 @@ addresses.each do |address|
       user: User.all.sample
     )
 
-    file = File.open("app/assets/images/card_photo/Preece Meguro.png")
+    # file = File.open("app/assets/images/card_photo/Preece Meguro.png")
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
@@ -158,9 +169,10 @@ addresses.each do |address|
   end
 end
 
+puts "Create train bins..."
 addresses = YAML.load_file("db/data/train_stations.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
       name: "Train-stations",
@@ -169,7 +181,7 @@ addresses.each do |address|
       user: User.all.sample
     )
 
-    file = File.open("app/assets/images/card_photo/Nakameguro Station.png")
+    # file = File.open("app/assets/images/card_photo/Nakameguro Station.png")
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
@@ -178,10 +190,10 @@ addresses.each do |address|
     end
   end
 end
-
+puts "Create jidohanbaiki bins..."
 addresses = YAML.load_file("db/data/vending_machines.yml")
 addresses.each do |address|
-  (1..7).to_a.each do |num|
+  bin_num.each do |num|
     bin = Bin.create!(
       address: num.to_s + address[1..-1],
       name: "Vending-machines",
@@ -190,7 +202,7 @@ addresses.each do |address|
       user: User.all.sample
     )
 
-    file = File.open("app/assets/images/card_photo/Meguro.png")
+    # file = File.open("app/assets/images/card_photo/Meguro.png")
     # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
     # bin.save
 
