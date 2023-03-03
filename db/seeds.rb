@@ -26,88 +26,143 @@ User.create(email: "ruka@binfind.com", password: "123123")
 User.create(email: "julien@binfind.com", password: "123123")
 categories = ["burnable", "can", "pet bottle", "unburnable"]
 
-
 categories.each do |category|
   Category.create!(name: category)
 end
 addresses = YAML.load_file("db/data/seven_eleven.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Seven-Eleven",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/7-11.png")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/family_mart.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Family-Mart",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/Family Mart.png")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/lawson.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Lawson",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/lawson.png")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/parks.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Park",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/Park.jpeg")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.where(name: ['burnable']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/supermarkets.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Supermarket",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/Preece Meguro.png")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/train_stations.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Train-stations",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/Nakameguro Station.png")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.all.each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
 addresses = YAML.load_file("db/data/vending_machines.yml")
 addresses.each do |address|
-  Bin.create!(
+  bin = Bin.create!(
     address: address,
     name: "Vending-machines",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
   )
+
+  file = File.open("app/assets/images/card_photo/Meguro.png")
+  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+  bin.save
+
+  Category.where(name: ['can', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+  end
 end
 
-Bin.all.each do |bin|
-  BinCategory.create!(bin: bin, category: Category.all.sample)
-  bin.destroy if bin.latitude.nil?
-end
+# Bin.all.each do |bin|
+#   BinCategory.create!(bin: bin, category: Category.all.sample)
+#   bin.destroy if bin.latitude.nil?
+# end
