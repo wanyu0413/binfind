@@ -43,7 +43,7 @@ addresses.each do |address|
   bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
   bin.save
 
-  Category.all.each do |category|
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
     BinCategory.create!(bin: bin, category: category)
   end
 end
@@ -62,7 +62,7 @@ addresses.each do |address|
   bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
   bin.save
 
-  Category.all.each do |category|
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
     BinCategory.create!(bin: bin, category: category)
   end
 end
@@ -81,7 +81,7 @@ addresses.each do |address|
   bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
   bin.save
 
-  Category.all.each do |category|
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
     BinCategory.create!(bin: bin, category: category)
   end
 end
