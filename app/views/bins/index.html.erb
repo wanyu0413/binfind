@@ -1,13 +1,12 @@
-<%# <%= link_to "New bin", new_bin_path if policy(Bin).new? %>
 <div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-markers-value="<%= @markers.to_json %>">
-  <%= form_with url: bins_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a bin category"
-  %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= form_with url: bins_path, method: :get, class: "d-flex", data: { controller: 'autosave' } do %>
+    <% @categories.each do |category| %>
+      <%= check_box_tag 'query[]', category.name, params[:query]&.include?(category.name), id: "category-#{category.id}", class: 'category-selector d-none', data: { action: 'autosave#save' } %>
+      <label for="category-<%= category.id %>">
+        <%= category.name %>
+      </label>
+    <% end %>
   <% end %>
   <div class="mapbox" style="width: 100%;" data-map-target="canvas">
   </div>
