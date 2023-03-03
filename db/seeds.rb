@@ -31,134 +31,172 @@ categories.each do |category|
 end
 addresses = YAML.load_file("db/data/seven_eleven.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
     name: "Seven-Eleven",
     # open_time: Tod::TimeOfDay.parse("8am"),
     # end_time: Tod::TimeOfDay.parse("11pm"),
     user: User.all.sample
-  )
+   )
 
-  file = File.open("app/assets/images/card_photo/7-11.png")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
+    # file = File.open("app/assets/images/card_photo/7-11.png")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
 
-  Category.all.each do |category|
-    BinCategory.create!(bin: bin, category: category)
+    Category.all.each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
 addresses = YAML.load_file("db/data/family_mart.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
-    name: "Family-Mart",
-    # open_time: Tod::TimeOfDay.parse("8am"),
-    # end_time: Tod::TimeOfDay.parse("11pm"),
-    user: User.all.sample
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
+      name: "Family-Mart",
+      # open_time: Tod::TimeOfDay.parse("8am"),
+      # end_time: Tod::TimeOfDay.parse("11pm"),
+      user: User.all.sample
+    )
+
+    # file = File.open("app/assets/images/card_photo/Family Mart.png")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
+
+    Category.all.each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
+  end
+end
+
+filepath = "db/data/jp_spots.kml"
+file = File.open(filepath)
+document  = Nokogiri::XML(file)
+users = User.all
+document.search('Placemark').each_with_index do |coordinates, index|
+  next unless index.to_s.include?('12') || index.to_s.include?('13')
+
+  name = coordinates.search('name').text.strip.include?("/") ? coordinates.search('name').text.strip.split("/")[1].strip : coordinates.search('name').text.strip
+  p name
+  longitude = coordinates.search('coordinates').text.strip.split(",")[0].to_f
+  p longitude
+  latitude = coordinates.search('coordinates').text.strip.split(",")[1].to_f
+  p latitude
+
+  bin = Bin.create(
+    name: name,
+    latitude: latitude,
+    longitude: longitude,
+    user: users.sample
   )
 
-  file = File.open("app/assets/images/card_photo/Family Mart.png")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
-
-  Category.all.each do |category|
-    BinCategory.create!(bin: bin, category: category)
-  end
+  puts "Created #{Bin.count} bins!"
 end
 
 addresses = YAML.load_file("db/data/lawson.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
-    name: "Lawson",
-    # open_time: Tod::TimeOfDay.parse("8am"),
-    # end_time: Tod::TimeOfDay.parse("11pm"),
-    user: User.all.sample
-  )
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
+      name: "Lawson",
+      # open_time: Tod::TimeOfDay.parse("8am"),
+      # end_time: Tod::TimeOfDay.parse("11pm"),
+      user: User.all.sample
+    )
 
-  file = File.open("app/assets/images/card_photo/lawson.png")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
+    file = File.open("app/assets/images/card_photo/lawson.png")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
 
-  Category.all.each do |category|
-    BinCategory.create!(bin: bin, category: category)
+    Category.all.each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
 addresses = YAML.load_file("db/data/parks.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
-    name: "Park",
-    # open_time: Tod::TimeOfDay.parse("8am"),
-    # end_time: Tod::TimeOfDay.parse("11pm"),
-    user: User.all.sample
-  )
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
+      name: "Park",
+      # open_time: Tod::TimeOfDay.parse("8am"),
+      # end_time: Tod::TimeOfDay.parse("11pm"),
+      user: User.all.sample
+    )
 
-  file = File.open("app/assets/images/card_photo/Park.jpeg")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
+    file = File.open("app/assets/images/card_photo/Park.jpeg")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
 
-  Category.where(name: ['burnable']).each do |category|
-    BinCategory.create!(bin: bin, category: category)
+    Category.where(name: ['burnable']).each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
 addresses = YAML.load_file("db/data/supermarkets.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
-    name: "Supermarket",
-    # open_time: Tod::TimeOfDay.parse("8am"),
-    # end_time: Tod::TimeOfDay.parse("11pm"),
-    user: User.all.sample
-  )
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
+      name: "Supermarket",
+      # open_time: Tod::TimeOfDay.parse("8am"),
+      # end_time: Tod::TimeOfDay.parse("11pm"),
+      user: User.all.sample
+    )
 
-  file = File.open("app/assets/images/card_photo/Preece Meguro.png")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
+    file = File.open("app/assets/images/card_photo/Preece Meguro.png")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
 
-  Category.all.each do |category|
-    BinCategory.create!(bin: bin, category: category)
+    Category.all.each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
 addresses = YAML.load_file("db/data/train_stations.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
-    name: "Train-stations",
-    # open_time: Tod::TimeOfDay.parse("8am"),
-    # end_time: Tod::TimeOfDay.parse("11pm"),
-    user: User.all.sample
-  )
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
+      name: "Train-stations",
+      # open_time: Tod::TimeOfDay.parse("8am"),
+      # end_time: Tod::TimeOfDay.parse("11pm"),
+      user: User.all.sample
+    )
 
-  file = File.open("app/assets/images/card_photo/Nakameguro Station.png")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
+    file = File.open("app/assets/images/card_photo/Nakameguro Station.png")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
 
-  Category.all.each do |category|
-    BinCategory.create!(bin: bin, category: category)
+    Category.all.each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
 addresses = YAML.load_file("db/data/vending_machines.yml")
 addresses.each do |address|
-  bin = Bin.create!(
-    address: address,
-    name: "Vending-machines",
-    # open_time: Tod::TimeOfDay.parse("8am"),
-    # end_time: Tod::TimeOfDay.parse("11pm"),
-    user: User.all.sample
-  )
+  (1..7).to_a.each do |num|
+    bin = Bin.create!(
+      address: num.to_s + address[1..-1],
+      name: "Vending-machines",
+      # open_time: Tod::TimeOfDay.parse("8am"),
+      # end_time: Tod::TimeOfDay.parse("11pm"),
+      user: User.all.sample
+    )
 
-  file = File.open("app/assets/images/card_photo/Meguro.png")
-  bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-  bin.save
+    file = File.open("app/assets/images/card_photo/Meguro.png")
+    # bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+    # bin.save
 
-  Category.where(name: ['can', 'pet bottle']).each do |category|
-    BinCategory.create!(bin: bin, category: category)
+    Category.where(name: ['can', 'pet bottle']).each do |category|
+      BinCategory.create!(bin: bin, category: category)
+    end
   end
 end
 
