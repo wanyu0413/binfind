@@ -50,6 +50,14 @@ namespace :bin do
       bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
       bin.save
     end
+    photos = ["app/assets/images/card_photo/bin_1.png","app/assets/images/card_photo/bin_2.png","app/assets/images/card_photo/bin_3.jpg","app/assets/images/card_photo/bin_4.png","app/assets/images/card_photo/bin_5.png",]
+    bins = Bin.all
+    bins.each do |bin|
+      next if bin.photos.attached?
+      file = File.open(photos.sample)
+      bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+      bin.save
+    end
   end
 end
 #rails bin:attach_photos
