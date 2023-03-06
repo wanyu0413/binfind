@@ -1,5 +1,6 @@
-<% if policy(@bin).edit? %>
-  <%= link_to "Edit this bin", edit_bin_path(@bin) %> |
-<% end %>
+<%= link_to "Back", bins_path %>
+<p>Bin name: <%= @bin.name %></p>
+<p>Bin category: <%= @bin.categories.map { |c| c.name.capitalize }.join(", ") %></p>
+<p>Bin address: <%= @bin.address %></p>
 <!-- [...] -->
 <%= button_to "Destroy this bin", @bin, method: :delete if policy(@bin).destroy? %>

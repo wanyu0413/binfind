@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand navbar-light navbar-lewagon" data-darkmode-target="navbar">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to bins_path, class: "navbar-brand" do %>
       <%= image_tag "https://res.cloudinary.com/djzdj5fnx/image/upload/v1677640582/binfind-high-resolution-logo-black-on-transparent-background_sbprnl.png", class: "logo" %>
     <% end %>
     <div id="navbarSupportedContent">
@@ -9,7 +9,7 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://res.cloudinary.com/djzdj5fnx/image/upload/v1677638682/download_mb9u8c.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Add a bin", "#", class: "dropdown-item" %>
+              <%= link_to "Add a bin", new_bin_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
