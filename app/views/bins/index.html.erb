@@ -16,6 +16,9 @@
       <a href="https://www.facebook.com/kevin.s.tsai" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="https://twitter.com/supkev" target="_blank"><i class="fab fa-twitter"></i></a>
     </div>
+    <%= link_to new_bin_path do %>
+      <%= image_tag "card_photo/add_bin.png", class: "add-bin-icon"%>
+    <% end %>
     <div>
       <i class="fa-solid fa-eye btn-toggle" data-action="click->map#toggle click->darkmode#toggle"></i>
     </div>
