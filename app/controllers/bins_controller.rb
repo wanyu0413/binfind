@@ -1,4 +1,5 @@
 class BinsController < ApplicationController
+  before_action :set_bin, only: [:show, :destroy]
 
   def index
     @bins = policy_scope(Bin)
@@ -29,17 +30,34 @@ class BinsController < ApplicationController
     @bin = Bin.new(bin_params)
     @bin.user = current_user
     authorize @bin
+    if @bin.save
+      redirect_to @bin, notice: "Bin was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  def edit
-    authorize @bin
-  end
+  # def edit
+  #   authorize @bin
+  # end
 
-  def update
-    authorize @bin
-  end
+  # def update
+  #   authorize @bin
+  # end
 
   def destroy
     authorize @bin
+    @bin.destroy
+    redirect_to bins_url, notice: "Bin was successfully destroyed."
+  end
+
+  private
+
+  def set_bin
+    @bin = Bin.find(params[:id])
+  end
+
+  def bin_params
+    params.require(:bin).permit(:name, :address, category_ids: [], photos: [])
   end
 end
