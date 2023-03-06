@@ -102,6 +102,9 @@ document.search('Placemark').each_with_index do |coordinates, index|
     user: users.sample
   )
 
+  Category.where(name: ['burnable', 'unburnable', 'pet bottle']).each do |category|
+    BinCategory.create!(bin: bin, category: category)
+   end
 
   puts "Created #{Bin.count} bins!"
 end

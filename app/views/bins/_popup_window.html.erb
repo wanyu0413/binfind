@@ -4,12 +4,25 @@
   <% else %>
     <img src="https://www.dulton.jp/img/goods/8/PT_img.jpg" />
   <% end %>
+  <div>
+    <%= link_to  target: :blank do %>
+      <i class="fa-solid fa-circle-exclamation float-end pt-3"></i>
+    <% end %>
+  </div>
   <div class="card-trip-infos">
     <div>
       <h4><%= bin.name %></h4>
-      <p><%= bin.address %></p>
+      <p class="bin-address"><%= bin.address %></p>
       <% bin.categories.each do |category| %>
-        <p><%= category.name.capitalize %></p>
+        <% if category.name == "pet bottle" %>
+          <i class="fa-solid fa-recycle"></i>
+        <% elsif category.name == "burnable" %>
+          <i class="fa-solid fa-dumpster-fire"></i>
+        <% elsif category.name == "unburnable" %>
+          <i class="fa-solid fa-dumpster"></i>
+        <% else %>
+          <i class="fa-solid fa-wine-bottle"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
