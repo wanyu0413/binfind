@@ -39,10 +39,17 @@ export default class extends Controller {
           showUserHeading: true
       })
     );
+    this.direction = new MapboxDirections({
+      accessToken: mapboxgl.accessToken
+  }),
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)
+      const lat = position.coords.latitude
+      const long = position.coords.longitude
+      this.direction.setOrigin([long, lat])
+    });
     this.map.addControl(
-      new MapboxDirections({
-          accessToken: mapboxgl.accessToken
-      }),
+      this.direction,
       'top-left'
     );
   }
