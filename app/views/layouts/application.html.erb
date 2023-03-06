@@ -16,8 +16,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
   </head>
-  <body >
-    <div data-controller="darkmode">
+  <body data-controller="darkmode" data-darkmode-target="body">
+    <div>
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
       <%= render "shared/display_navigation" %>
