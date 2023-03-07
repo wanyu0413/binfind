@@ -16,13 +16,13 @@
       <p class="bin-address"><%= bin.address %></p>
       <% bin.categories.each do |category| %>
         <% if category.name == "pet bottle" %>
-          <i class="fa-solid fa-recycle"></i>
+          <i class="fa-solid fa-wine-bottle"></i>
         <% elsif category.name == "burnable" %>
           <i class="fa-solid fa-dumpster-fire"></i>
         <% elsif category.name == "unburnable" %>
-          <i class="fa-solid fa-dumpster"></i>
+          <i class="fa-solid fa-circle-xmark"></i>
         <% else %>
-          <i class="fa-solid fa-wine-bottle"></i>
+          <i class="fa-solid fa-prescription-bottle"></i>
         <% end %>
       <% end %>
     </div>
