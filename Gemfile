@@ -86,3 +86,4 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem "geocoder"
 gem "tod"
+gem 'mini_magick'
