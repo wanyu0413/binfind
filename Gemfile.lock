@@ -298,6 +298,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
+  mini_magick
   puma (~> 5.0)
   pundit
   rails (~> 7.0.4, >= 7.0.4.2)
