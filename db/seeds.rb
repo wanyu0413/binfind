@@ -83,7 +83,7 @@ end
 
 filepath = "db/data/jp_spots.kml"
 file = File.open(filepath)
-document  = Nokogiri::XML(file)
+document = Nokogiri::XML(file)
 users = User.all
 document.search('Placemark').each_with_index do |coordinates, index|
   next unless index.to_s.include?('12') || index.to_s.include?('13')

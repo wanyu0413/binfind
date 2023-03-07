@@ -1,3 +1,5 @@
+require 'exiftool'
+require 'open-uri'
 class BinsController < ApplicationController
   before_action :set_bin, only: [:show, :destroy]
 
@@ -31,6 +33,11 @@ class BinsController < ApplicationController
     @bin.user = current_user
     authorize @bin
     if @bin.save
+      url = @bin.photos.last.url
+      location = read_location_from_cloudinary(url)
+      @bin.latitude = location[:latitude]
+      @bin.longitude = location[:longitude]
+      @bin.save
       redirect_to @bin, notice: "Bin was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -58,6 +65,31 @@ class BinsController < ApplicationController
   end
 
   def bin_params
-    params.require(:bin).permit(:name, :address, category_ids: [], photos: [])
+    # params.require(:bin).permit(:name, :address, category_ids: [], photos: [])
+    params.require(:bin).permit(:name, category_ids: [], photos: [])
+  end
+
+  def read_location_from_cloudinary(image_url)
+    # Download the image from Google Photos and save it to a local file
+    image_data = URI.open(image_url).read
+    File.open('image.jpg', 'wb') do |file|
+      file.write(image_data)
+    end
+    # Use Exiftool to read the metadata of the local file
+    exiftool = Exiftool.new('image.jpg')
+
+    latitude = exiftool[:gps_latitude]
+    longitude = exiftool[:gps_longitude]
+
+    # Print the latitude & longitude
+    # puts "Latitude: #{latitude}"
+    # puts "Longitude: #{longitude}"
+
+    # Delete the local file
+    File.delete('image.jpg')
+    {
+      latitude: latitude,
+      longitude: longitude
+    }
   end
 end
