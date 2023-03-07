@@ -11,10 +11,27 @@
   <div class="mapbox" style="width: 100%;" data-map-target="canvas">
   </div>
   <div class="footer d-flex justify-content-between" data-darkmode-target="footer">
-    <div class="footer-links">
-      <a href="https://www.instagram.com/supkev/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/kevin.s.tsai" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://twitter.com/supkev" target="_blank"><i class="fab fa-twitter"></i></a>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Share
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Share & Follow</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="footer-links">
+              <a href="https://www.instagram.com/supkev/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/kevin.s.tsai" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://twitter.com/supkev" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <%= link_to new_bin_path do %>
       <%= image_tag "card_photo/add_bin.png", class: "add-bin-icon"%>
