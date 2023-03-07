@@ -1,6 +1,6 @@
 <div class="card-trip">
   <% if bin.photos.attached? %>
-    <%= cl_image_tag(bin.photos.first.key) %>
+    <%= cl_image_tag(bin.photos.first.key, :format => "jpg") %>
   <% else %>
     <img src="https://www.dulton.jp/img/goods/8/PT_img.jpg" />
   <% end %>
@@ -12,7 +12,7 @@
   </div>
   <div class="card-trip-infos">
     <div>
-      <h4><%= bin.name %></h4>
+      <h2><%= bin.name %></h2>
       <p class="bin-address"><%= bin.address %></p>
       <% bin.categories.each do |category| %>
         <% if category.name == "pet bottle" %>
