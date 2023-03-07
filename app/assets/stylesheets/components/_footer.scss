@@ -51,6 +51,7 @@ li a:hover {
 .fa-eye:hover {
   opacity: 1;
   color: black;
+  cursor: pointer;
 }
 
 .add-bin-icon {
@@ -71,5 +72,8 @@ li a:hover {
 }
 
 .btn {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  outline: none;
+  background: transparent;
+  border: 1px solid transparent;
+  color: black;
 }
