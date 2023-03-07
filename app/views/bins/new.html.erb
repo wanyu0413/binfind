@@ -2,7 +2,7 @@
   <h2>Create a new bin 🗑</h2>
   <%= simple_form_for @bin do |f| %>
     <%= f.input :name, html5: true %>
-    <%= f.input :address, html5: true %>
+    <%#= f.input :address, html5: true %>
     <%= f.association :categories, multiple: true %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit 'Create a new bin', class: 'btn btn-info mt-2 text-white' %>
