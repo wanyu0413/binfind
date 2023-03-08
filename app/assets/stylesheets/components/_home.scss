@@ -15,8 +15,6 @@
   // display: flex;
   // justify-content: center;
   // align-items: center;
-  background-color: rgb(155, 207, 41);
-  border-radius: 10px;
   margin-bottom: 6px;
   font-weight: 300;
   padding-bottom: 6px;
@@ -27,4 +25,10 @@
 .home-vid {
   position: absolute;
   z-index: 1;
+}
+
+.about-bin {
+  // background-color: rgb(155, 207, 41);
+  color: white;
+  border-radius: 8px;
 }
