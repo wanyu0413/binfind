@@ -13,13 +13,11 @@
             <%#= f.input :address, html5: true %>
             <%= f.association :categories, multiple: true %>
             <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-            <%= f.submit 'Create a new bin', class: 'btn btn-info mt-2 text-white' %>
+            <div class="text-center">
+              <%= f.submit 'Create a new bin', class: 'btn btn-primary text-light' %>
+            </div>
           <% end %>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
