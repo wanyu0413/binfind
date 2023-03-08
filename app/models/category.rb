@@ -4,11 +4,11 @@ class Category < ApplicationRecord
   validates :name, presence: true
   def icon
     case name
-    when "burnable" then "fa-dumpster-fire"
-    when "pet bottle" then "fa-wine-bottle"
-    when "unburnable" then "fa-circle-xmark"
+    when "burnable" then "jpic-kanen"
+    when "pet bottle" then "jpic-pettobotoru"
+    when "unburnable" then "jpic-kaki-genkin"
     else
-      "fa-prescription-bottle"
+      "jpic-kan"
     end
   end
 end
