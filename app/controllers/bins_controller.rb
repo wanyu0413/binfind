@@ -1,6 +1,7 @@
 require 'exiftool'
 require 'open-uri'
 class BinsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_bin, only: [:show, :destroy]
 
   def index
