@@ -1,0 +1,30 @@
+.home-container {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-main-btn {
+  position: relative;
+  z-index: 999;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  background-color: rgb(155, 207, 41);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-weight: 300;
+  padding-bottom: 6px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+.home-vid {
+  position: absolute;
+  z-index: 1;
+}
