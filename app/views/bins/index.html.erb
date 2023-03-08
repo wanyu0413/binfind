@@ -37,9 +37,11 @@
         </div>
       </div>
     </div>
-    <%= link_to new_bin_path do %>
-      <%= image_tag "card_photo/add_bin.png", class: "add-bin-icon"%>
-    <% end %>
+    <!-- Button trigger modal -->
+    <button type="button" data-bs-toggle="modal" data-bs-target="#popupModal">
+      <%= image_tag "card_photo/add_bin.png", class: "add-bin-icon" %>
+    </button>
+    <%= render 'bins/new_bin_popup' %>
     <div>
       <i class="fa-solid fa-eye btn-toggle" data-action="click->map#toggle click->darkmode#toggle"></i>
     </div>
