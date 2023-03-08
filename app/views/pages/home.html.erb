@@ -1,4 +1,11 @@
 <div class="home-container">
+  <div class="banner">
+    <div class="about-bin">
+      <%= image_tag 'binfind_logo.png', alt: "text", width: '37gst%', height: 'auto'  %>
+      <h6 class="fs-3 text fw-bolder text-white">Looking to dispose your trash? With a few clicks, you can easily find bins near you. </h6>
+      <%= link_to "Find Your Nearest Bin", bins_path , class: "btn btn-success",style: 'border-radius: 7px;', type: "button" %>
+    </div>
+  </div>
   <%#= video_tag "https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home-vid" %>
   <%# <video src="" autoplay loop muted class='home-vid'></video> %>
   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto" class="home-vid">
@@ -6,5 +13,5 @@
   </video>
   <div class= "home-main-btn">
     <h1></h1>
-    <%= link_to "Find Your Nearest Bin", bins_path , class: "btn btn-outline-secondary", type: "button" %>
+    <%# <%= link_to "Find Your Nearest Bin", bins_path , class: "btn btn-outline-secondary", type: "button" %>
   </div>
