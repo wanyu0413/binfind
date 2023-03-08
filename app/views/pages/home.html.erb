@@ -1,6 +1,8 @@
-<div class="container">
-  <%= video_tag "https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4", autoplay: true, loop: :loop, muted: true %>
-  <div>
-    <h1>Enter title here</h1>
+<div class="home-container">
+  <%= video_tag "https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4", autoplay: true, loop: :loop, muted: true, class: "home-vid" %>
+  <%# <video src="https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4" autoplay loop muted class='home-vid'></video> %>
+  <div class= "home-main-btn">
+    <h1></h1>
+    <%= link_to "Find Your Nearest Bin", bins_path , class: "btn btn-outline-secondary", type: "button" %>
   </div>
 </div>
