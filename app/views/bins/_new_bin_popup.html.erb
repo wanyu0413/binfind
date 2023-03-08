@@ -11,7 +11,7 @@
           <%= simple_form_for @bin do |f| %>
             <%= f.input :name, html5: true %>
             <%#= f.input :address, html5: true %>
-            <%= f.association :categories, multiple: true %>
+            <%= f.association :categories, multiple: true, collection: Category.all.map{|category| category.name.capitalize} %>
             <%= f.input :photos, as: :file, input_html: { multiple: true } %>
             <div class="text-center">
               <%= f.submit 'Create a new bin', class: 'btn btn-primary text-light' %>
