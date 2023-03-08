@@ -13,7 +13,8 @@ class BinsController < ApplicationController
       {
         lat: bin.latitude,
         lng: bin.longitude,
-        popup_window_html: render_to_string(partial: "popup_window", locals: { bin: bin })
+        popup_window_html: render_to_string(partial: "popup_window", locals: { bin: bin }),
+        marker_html: render_to_string(partial: "marker")
       }
     end
     @categories = Category.all
