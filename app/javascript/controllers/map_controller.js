@@ -39,19 +39,30 @@ export default class extends Controller {
           showUserHeading: true
       })
     );
+
     this.direction = new MapboxDirections({
       accessToken: mapboxgl.accessToken
-  }),
+    }),
+
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position)
       const lat = position.coords.latitude
       const long = position.coords.longitude
       this.direction.setOrigin([long, lat])
     });
+
     this.map.addControl(
       this.direction,
       'top-left'
     );
+
+    this.direction.on("destination", (e) => {
+      // console.log(e.feature.geometry.coordinates)
+      const originCoords = this.direction.getOrigin().geometry.coordinates
+      const destinationCoords = this.direction.getDestination().geometry.coordinates
+      this.map.fitBounds([originCoords, destinationCoords], { padding: 70, maxZoom: 15, duration: 0 })
+
+    })
   }
 
   toggle(event) {
