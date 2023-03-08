@@ -36,7 +36,7 @@ class BinsController < ApplicationController
       @bin.latitude = location[:latitude]
       @bin.longitude = location[:longitude]
       @bin.save
-      redirect_to root_path, notice: "Bin was successfully created."
+      redirect_to bins_url, notice: "Bin was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
