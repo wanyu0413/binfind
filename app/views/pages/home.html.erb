@@ -1,6 +1,9 @@
 <div class="home-container">
-  <%= video_tag "https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home-vid" %>
-  <%# <video src="https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4" autoplay loop muted class='home-vid'></video> %>
+  <%#= video_tag "https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home-vid" %>
+  <%# <video src="" autoplay loop muted class='home-vid'></video> %>
+  <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto" class="home-vid">
+    <source src="https://res.cloudinary.com/dh7mp7shk/video/upload/v1678239698/background1_idcpsj.mp4" type="video/mp4">
+  </video>
   <div class= "home-main-btn">
     <h1></h1>
     <%= link_to "Find Your Nearest Bin", bins_path , class: "btn btn-outline-secondary", type: "button" %>
