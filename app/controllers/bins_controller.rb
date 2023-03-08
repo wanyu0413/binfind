@@ -6,6 +6,7 @@ class BinsController < ApplicationController
 
   def index
     @bins = policy_scope(Bin)
+    @bin = Bin.new
     if params[:query].present?
       # @bins = Bin.where(category: params[:query])
       @bins = Bin.joins(bin_categories: :category).where(categories: {name: params[:query]})
@@ -22,11 +23,6 @@ class BinsController < ApplicationController
   end
 
   def show
-    authorize @bin
-  end
-
-  def new
-    @bin = Bin.new
     authorize @bin
   end
 
