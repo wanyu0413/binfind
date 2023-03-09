@@ -4,7 +4,10 @@
     <% @categories.each do |category| %>
       <%= check_box_tag 'query[]', category.name, params[:query]&.include?(category.name), id: "category-#{category.id}", class: 'category-selector d-none', data: { action: 'autosave#save' } %>
       <label for="category-<%= category.id %>">
-        <span class='jpic <%=category.icon%>'></span><%= category.name.capitalize %>
+        <span class='jpic <%=category.icon%>'>
+          <div class="filter-category-names">
+          </span><%= category.name.capitalize %>
+        </div>
       </label>
     <% end %>
   <% end %>
