@@ -67,7 +67,19 @@ export default class extends Controller {
       this.map.fitBounds([originCoords, destinationCoords], { padding: 70, maxZoom: 15, duration: 0 })
 
     })
+    document.addEventListener("turbolinks:load", () => {
+      const url = new URLSearchParams(window.location.search)
 
+      if(url.get("lat") && url.get('lng')) {
+        console.log('fly');
+        this.map.flyTo({
+          center: [url.get('lng'), url.get("lat")],
+          zoom: 22,
+          essential: true,
+        })
+      }
+    }
+    );
     if(url.get("lat") && url.get('lng')) {
       console.log('fly');
       this.map.flyTo({

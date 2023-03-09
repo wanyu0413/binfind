@@ -19,9 +19,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body data-controller="darkmode" data-darkmode-target="body">
+    <%= render "shared/flashes" %>
     <div>
       <%= render "shared/navbar" %>
-      <%= render "shared/flashes" %>
       <%= render "shared/display_navigation" %>
       <%= yield %>
     </div>
