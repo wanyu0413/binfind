@@ -9,7 +9,7 @@ class BinsController < ApplicationController
     @bin = Bin.new
     if params[:query].present?
       # @bins = Bin.where(category: params[:query])
-      @bins = Bin.includes(photo_attachments: :blob).joins(bin_categories: :category).where(categories: {name: params[:query]})
+      @bins = Bin.joins(bin_categories: :category).where(categories: {name: params[:query]})
     end
     @markers = @bins.geocoded.map do |bin|
       {
@@ -29,12 +29,13 @@ class BinsController < ApplicationController
   def create
     @bin = Bin.new(bin_params)
     @bin.user = current_user
-    location = read_coordinates(bin_params[:photos].last.tempfile.path)
-    @bin.latitude = location[:latitude]
-    @bin.longitude = location[:longitude]
-
     authorize @bin
     if @bin.save
+      url = @bin.photos.last.url
+      location = read_location_from_cloudinary(url)
+      @bin.latitude = location[:latitude]
+      @bin.longitude = location[:longitude]
+      @bin.save
       redirect_to bins_url(lat: @bin.latitude, lng: @bin.longitude), notice: "Bin was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -84,24 +85,6 @@ class BinsController < ApplicationController
 
     # Delete the local file
     File.delete('image.jpg')
-    {
-      latitude: latitude,
-      longitude: longitude
-    }
-  end
-
-  def read_coordinates(image_path)
-
-    # Use Exiftool to read the metadata of the local file
-    exiftool = Exiftool.new(image_path)
-
-    latitude = exiftool[:gps_latitude]
-    longitude = exiftool[:gps_longitude]
-
-    # Print the latitude & longitude
-    # puts "Latitude: #{latitude}"
-    # puts "Longitude: #{longitude}"
-
     {
       latitude: latitude,
       longitude: longitude
