@@ -1,5 +1,5 @@
 <div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-map-markers-value="<%= @markers.to_json %>">
+  data-map-markers-value="<%= @markers.to_json %>" >
   <%= form_with url: bins_path, method: :get, class: "d-flex", data: { controller: 'autosave' } do %>
     <% @categories.each do |category| %>
       <%= check_box_tag 'query[]', category.name, params[:query]&.include?(category.name), id: "category-#{category.id}", class: 'category-selector d-none', data: { action: 'autosave#save' } %>
