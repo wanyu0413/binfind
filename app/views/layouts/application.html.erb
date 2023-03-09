@@ -2,7 +2,11 @@
 <html>
   <head>
     <title>Binfind</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <%# <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> %>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
@@ -11,11 +15,8 @@
     <link rel="stylesheet" href="https://yannklein.github.io/japan-pictograms/japan-pictograms.css">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
   </head>
   <body data-controller="darkmode" data-darkmode-target="body">
     <div>

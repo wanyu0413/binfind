@@ -20,7 +20,7 @@ export default class extends Controller {
       // style: "mapbox://styles/mapbox/streets-v10"
       style: "mapbox://styles/mapbox/streets-v12",
       center: [-24, 42], // starting center in [lng, lat]
-      zoom: 1 // starting zoom
+      zoom: 0.1 // starting zoom
     })
 
     this.#addMarkersToMap()
