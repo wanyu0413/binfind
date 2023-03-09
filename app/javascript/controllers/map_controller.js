@@ -7,13 +7,19 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    coord: Array
   }
 
   static targets = ["canvas", "alert"]
 
   connect() {
     console.log("mapcontroller")
+    // console.log(window.location.href);
+    // if (this.coordValue.length > 0) console.log(this.coordValue);
+
+    const url = new URLSearchParams(window.location.search)
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.canvasTarget,
@@ -45,10 +51,8 @@ export default class extends Controller {
     }),
 
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position)
       const lat = position.coords.latitude
       const long = position.coords.longitude
-      this.direction.setOrigin([long, lat])
     });
 
     this.map.addControl(
@@ -63,6 +67,15 @@ export default class extends Controller {
       this.map.fitBounds([originCoords, destinationCoords], { padding: 70, maxZoom: 15, duration: 0 })
 
     })
+
+    if(url.get("lat") && url.get('lng')) {
+      console.log('fly');
+      this.map.flyTo({
+        center: [url.get('lng'), url.get("lat")],
+        zoom: 22,
+        essential: true,
+      })
+    }
   }
 
   toggle(event) {
@@ -84,7 +97,6 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
-
     })
   }
 
