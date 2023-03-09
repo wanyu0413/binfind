@@ -1,6 +1,6 @@
 <div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-markers-value="<%= @markers.to_json %>" >
-  <%= form_with url: bins_path, method: :get, class: "d-flex", data: { controller: 'autosave' } do %>
+  <%= form_with url: bins_path(lat: params[:lat], lng: params[:lng]), method: :get, class: "d-flex", data: { controller: 'autosave' } do %>
     <% @categories.each do |category| %>
       <%= check_box_tag 'query[]', category.name, params[:query]&.include?(category.name), id: "category-#{category.id}", class: 'category-selector d-none', data: { action: 'autosave#save' } %>
       <label for="category-<%= category.id %>">
@@ -10,6 +10,8 @@
         </div>
       </label>
     <% end %>
+    <%= text_field_tag 'lat', params[:lat], class: 'category-selector d-none', data: { action: 'autosave#save' } %>
+    <%= text_field_tag 'lng', params[:lng], class: 'category-selector d-none', data: { action: 'autosave#save' } %>
   <% end %>
   <div class="mapbox" style="width: 100%;" data-map-target="canvas">
   </div>

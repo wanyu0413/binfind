@@ -4,6 +4,8 @@
 
 import { application } from "./application"
 
+import CurrentLocationController from "./current_location_controller"
+application.register("current-location", CurrentLocationController)
 
 import DarkmodeController from "./darkmode_controller"
 application.register("darkmode", DarkmodeController)
@@ -15,5 +17,4 @@ import MapController from "./map_controller"
 application.register("map", MapController)
 
 import Autosave from 'stimulus-rails-autosave'
-
 application.register('autosave', Autosave)

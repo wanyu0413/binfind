@@ -6,10 +6,14 @@ class BinsController < ApplicationController
 
   def index
     @bins = policy_scope(Bin)
+
     @bin = Bin.new
     if params[:query].present?
       # @bins = Bin.where(category: params[:query])
       @bins = Bin.joins(bin_categories: :category).where(categories: {name: params[:query]})
+    end
+    if params[:lat].present?
+      @bins = @bins.geocoded.near([params[:lat], params[:lng]], 1)
     end
     @markers = @bins.geocoded.map do |bin|
       {
