@@ -1,9 +1,9 @@
-<div class="home-container">
+<div class="home-container" data-controller="current-location">
   <div class="banner">
     <div class="about-bin">
       <%= image_tag 'binfind_logo.png', alt: "text", width: '75%', height: 'auto'  %>
       <h6 class="fs-3 text fw-bolder text-white">Looking to dispose your trash?</h6>
-      <%= link_to "Find Your Nearest Bin", bins_path , class: "btn btn-success",style: 'border-radius: 7px;', type: "button" %>
+      <%= link_to "Find Your Nearest Bin", bins_path, data:{current_location_target:'link'} , class: "btn btn-success",style: 'border-radius: 7px;', type: "button" %>
     </div>
   </div>
   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto" class="home-vid">

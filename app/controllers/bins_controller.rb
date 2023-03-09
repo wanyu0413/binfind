@@ -6,6 +6,10 @@ class BinsController < ApplicationController
 
   def index
     @bins = policy_scope(Bin)
+
+    if params[:lat].present?
+      @bins = @bins.near([params[:lat], params[:lng]], 1)
+    end
     @bin = Bin.new
     if params[:query].present?
       # @bins = Bin.where(category: params[:query])

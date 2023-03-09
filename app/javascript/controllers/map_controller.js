@@ -72,7 +72,7 @@ export default class extends Controller {
       console.log('fly');
       this.map.flyTo({
         center: [url.get('lng'), url.get("lat")],
-        zoom: 22,
+        zoom: 18,
         essential: true,
       })
     }
