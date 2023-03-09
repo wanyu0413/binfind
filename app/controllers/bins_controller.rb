@@ -99,7 +99,7 @@ class BinsController < ApplicationController
   def read_coordinates(image_path)
 
     # Use Exiftool to read the metadata of the local file
-    exiftool = Exiftool.new(image_path)
+    pp exiftool = Exiftool.new(image_path)
 
     latitude = exiftool[:gps_latitude]
     longitude = exiftool[:gps_longitude]
