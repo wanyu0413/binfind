@@ -34,8 +34,10 @@ class BinsController < ApplicationController
     @bin = Bin.new(bin_params)
     @bin.user = current_user
     location = read_coordinates(bin_params[:photos].last.tempfile.path)
-    @bin.latitude = location[:latitude]
-    @bin.longitude = location[:longitude]
+    puts "=" * 50
+    p @bin.latitude = location[:latitude]
+    p @bin.longitude = location[:longitude]
+    puts "=" * 50
 
     authorize @bin
     if @bin.save
