@@ -45,3 +45,8 @@ body {
 .darkmode .btn {
   filter: invert(1);
 }
+
+.darkmode .footer-links a {
+  color: black;
+  opacity: 0.5;
+}
