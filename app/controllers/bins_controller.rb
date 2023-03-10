@@ -33,8 +33,8 @@ class BinsController < ApplicationController
   def create
     @bin = Bin.new(bin_params)
     @bin.user = current_user
-    location = read_coordinates(bin_params[:photos].last.tempfile.path)
     puts "=" * 50
+    location = read_coordinates(bin_params[:photos].last.tempfile.path)
     p @bin.latitude = location[:latitude]
     p @bin.longitude = location[:longitude]
     puts "=" * 50
