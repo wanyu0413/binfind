@@ -33,9 +33,11 @@ class BinsController < ApplicationController
   def create
     @bin = Bin.new(bin_params)
     @bin.user = current_user
+    puts "=" * 50
     location = read_coordinates(bin_params[:photos].last.tempfile.path)
-    @bin.latitude = location[:latitude]
-    @bin.longitude = location[:longitude]
+    p @bin.latitude = location[:latitude]
+    p @bin.longitude = location[:longitude]
+    puts "=" * 50
 
     authorize @bin
     if @bin.save
@@ -97,7 +99,7 @@ class BinsController < ApplicationController
   def read_coordinates(image_path)
 
     # Use Exiftool to read the metadata of the local file
-    exiftool = Exiftool.new(image_path)
+    pp exiftool = Exiftool.new(image_path)
 
     latitude = exiftool[:gps_latitude]
     longitude = exiftool[:gps_longitude]
