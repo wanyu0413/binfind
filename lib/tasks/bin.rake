@@ -18,7 +18,7 @@ namespace :bin do
     puts "lawson"
     bins = Bin.where(name: "Lawson")
     bins.each do |bin|
-      file = File.open("app/assets/images/card_photo/lawson.png")
+      file = File.open("app/assets/images/card_photo/Lawson.png")
       bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
       bin.save
     end
@@ -50,7 +50,7 @@ namespace :bin do
       bin.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
       bin.save
     end
-    photos = ["app/assets/images/card_photo/bin_1.png","app/assets/images/card_photo/bin_2.png","app/assets/images/card_photo/bin_3.jpg","app/assets/images/card_photo/bin_4.png","app/assets/images/card_photo/bin_5.png",]
+    photos = ["app/assets/images/card_photo/bin_1.png","app/assets/images/card_photo/bin_2.png","app/assets/images/card_photo/bin_3.jpg","app/assets/images/card_photo/bin_4.png","app/assets/images/card_photo/bin_5.png"]
     bins = Bin.all
     bins.each do |bin|
       next if bin.photos.attached?
